@@ -16,7 +16,7 @@ public class CommandeController{
 	@RequestMapping("/commandes")
 	public String getAllCommandes(Model model){
 		model.addAttribute("commandes", commandeRepository.findAll());
-		return "index";
+		return "commandes";
 	}
 
 }
