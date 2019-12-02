@@ -5,7 +5,6 @@
 <meta charset="UTF-8">
 <link href="/css/main.css" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-1.10.2.js"
-<<<<<<< Updated upstream
 	type="text/javascript"></script>
 <script type="text/javascript">
 function changeState(id){
@@ -142,7 +141,6 @@ function changeState(id){
 		</div>
 		</div>
 		</div>
-=======
 	type="text/javascript">
 </script>
 <title>Monitoring</title>
@@ -165,6 +163,5 @@ function changeState(id){
 						<td><c:out value="${numberOfCommandesInStateThree}" /></td>
 					</tr>
 			</table>
->>>>>>> Stashed changes
 </body>
 </html>
