@@ -44,12 +44,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authenticationProvider(getProvider())
                 .formLogin()
                 .loginProcessingUrl("/login")
-                .successHandler(new AuthentificationLoginSuccessHandler())
+                .defaultSuccessUrl("/commandes")
                 .failureHandler(new SimpleUrlAuthenticationFailureHandler())
                 .and()
                 .logout()
                 .logoutUrl("/logout")
-                .logoutSuccessHandler(new AuthentificationLogoutSuccessHandler())
+                .logoutSuccessUrl("/login")
                 .invalidateHttpSession(true)
                 .and()
                 .authorizeRequests()
@@ -58,6 +58,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/commandes").authenticated()
                 .anyRequest().permitAll();
     }
+    
+    /*
     private class AuthentificationLoginSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
         @Override
         public void onAuthenticationSuccess(HttpServletRequest request,
@@ -72,7 +74,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                                     Authentication authentication) throws IOException, ServletException {
             response.setStatus(HttpServletResponse.SC_OK);
         }
-    }
+    }*/
+    
     @Bean
     public AuthenticationProvider getProvider() {
         AppAuthProvider provider = new AppAuthProvider();
