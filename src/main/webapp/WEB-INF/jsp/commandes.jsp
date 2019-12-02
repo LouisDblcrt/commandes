@@ -187,5 +187,10 @@ function changeState(id){
 			</div>
 		</div>
 	</div>
+		<footer>
+		<a class="btn btn-primary " href="http://localhost:8080/monitoring" role="button">suivi des commandes</a>
+			<div>dernier traitement réalisé le : <span id="date_modif"><c:out value = "${getLastUpdatedCommande.date_modification}"/></span>
+			</div>
+		</footer>
 </body>
 </html>

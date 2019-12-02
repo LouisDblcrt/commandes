@@ -72,7 +72,7 @@ public class Commande {
 	public void setDate_modification(Date date_modification) {
 		this.date_modification = date_modification;
 	}
-
+	
 	@Override
 	public String toString() {
 		return "Commande [id=" + id + ", id_magasin=" + id_magasin + ", etat=" + etat + ", date_creation="

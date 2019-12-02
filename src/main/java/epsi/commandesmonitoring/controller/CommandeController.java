@@ -1,6 +1,8 @@
 package epsi.commandesmonitoring.controller;
 
 import java.sql.Date;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,9 +29,18 @@ public class CommandeController{
    		model.addAttribute("listCommandesEnPrep", commandeRepository.selectCommandeEnPrep());
    		model.addAttribute("listCommandesFini", commandeRepository.selectCommandeFini());
    		model.addAttribute("listCommandesHistorisee", commandeRepository.selectCommandeHistorisee());
-
+   		model.addAttribute("getLastUpdatedCommande", commandeRepository.selectLastUpdatedCommande());
 		return "commandes";
 	}
+    
+    @GetMapping({"/monitoring"})
+    public void getLastUpdatedCommandes(Model model){
+    	model.addAttribute("getLastUpdatedCommande", commandeRepository.selectLastUpdatedCommande());
+    	model.addAttribute("numberOfCommandesInStateZero", commandeRepository.countCommandeOfStateZero());
+    	model.addAttribute("numberOfCommandesInStateOne", commandeRepository.countCommandeOfStateOne());
+    	model.addAttribute("numberOfCommandesInStateTwo", commandeRepository.countCommandeOfStateTwo());
+    	model.addAttribute("numberOfCommandesInStateThree", commandeRepository.countCommandeOfStateThree());
+    }
    
        
     

@@ -5,12 +5,14 @@ import java.util.Collection;
 
 import javax.transaction.Transactional;
 
+import org.hibernate.type.EnumType;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import epsi.commandesmonitoring.model.Commande;
+import epsi.commandesmonitoring.model.Etat;
 @Repository
 public interface CommandeRepository extends JpaRepository<Commande, Long>{
 
@@ -31,4 +33,20 @@ public interface CommandeRepository extends JpaRepository<Commande, Long>{
 	
 	@Query("SELECT c FROM Commande c WHERE c.etat =3")
 	Collection<Commande> selectCommandeHistorisee();
+	
+	@Query(value = "SELECT * FROM Commande c ORDER BY date_modification desc LIMIT 1", nativeQuery = true)
+	Commande selectLastUpdatedCommande();
+	
+	@Query(value = "SELECT COUNT(*) FROM Commande c WHERE c.etat = 0", nativeQuery = true)
+	String countCommandeOfStateZero();
+	
+	@Query(value = "SELECT COUNT(*) FROM Commande c WHERE c.etat = 1", nativeQuery = true)
+	String countCommandeOfStateOne();
+	
+	@Query(value = "SELECT COUNT(*) FROM Commande c WHERE c.etat = 2", nativeQuery = true)
+	String countCommandeOfStateTwo();
+	
+	@Query(value = "SELECT COUNT(*) FROM Commande c WHERE c.etat = 3", nativeQuery = true)
+	String countCommandeOfStateThree();
+	
 }
