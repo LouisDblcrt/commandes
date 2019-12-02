@@ -24,6 +24,18 @@ function changeState(id){
 
 	}
 	}
+	
+	function deco() {
+		if(confirm("Etes-vous sur de vouloir vous déconnecter ?")){
+			const Http = new XMLHttpRequest();
+			const url="http://localhost:8080/logout";
+			Http.open("post", url);
+			Http.send();
+			document.location.href="login"
+		}else{
+			document.location.reload(true);
+		}
+	}
 </script>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -42,6 +54,7 @@ function changeState(id){
 	crossorigin="anonymous"></script>
 </head>
 <body>
+<button onclick="deco()">Déconnexion</button>
 	<div class="box1">
 		<div id="a" class="table-responsive ">
 		<h1>Demandé</h1>
