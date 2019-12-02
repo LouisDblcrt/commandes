@@ -54,7 +54,10 @@ function changeState(id){
 	crossorigin="anonymous"></script>
 </head>
 <body>
-<button onclick="deco()">Déconnexion</button>
+<button class="btn btn-primary" onclick="deco()">Déconnexion</button>
+		<a class="btn btn-primary " href="http://localhost:8080/monitoring" role="button">suivi des commandes</a>
+			<div>dernier traitement réalisé le : <span id="date_modif"><c:out value = "${getLastUpdatedCommande.date_modification}"/></span>
+		</div>
 	<div class="box1">
 		<div id="a" class="table-responsive ">
 		<h1>Demandé</h1>
@@ -187,10 +190,5 @@ function changeState(id){
 			</div>
 		</div>
 	</div>
-		<footer>
-		<a class="btn btn-primary " href="http://localhost:8080/monitoring" role="button">suivi des commandes</a>
-			<div>dernier traitement réalisé le : <span id="date_modif"><c:out value = "${getLastUpdatedCommande.date_modification}"/></span>
-			</div>
-		</footer>
 </body>
 </html>
