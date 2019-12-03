@@ -49,8 +49,15 @@ public class CommandeController{
 	public void changeStateCommandes(@PathVariable(name="id") Long id){
     	Commande commande = commandeRepository.findById(id).orElseThrow(IllegalArgumentException::new);
     	java.util.Date utilDate = new java.util.Date();
-    	commandeRepository.updateEtat(Integer.valueOf(commande.getEtat().getCode()+1), new Date(utilDate.getTime()),id, id+20);
+    	commandeRepository.updateEtat(Integer.valueOf(commande.getEtat().getCode()+1), new Date(utilDate.getTime()),id, id+20,commande.getEtat().getCode());
 	}
+
+    @PostMapping({"/commande/{id}"})
+   	public void changeStateCommande(@PathVariable(name="id") Long id){
+       	Commande commande = commandeRepository.findById(id).orElseThrow(IllegalArgumentException::new);
+       	java.util.Date utilDate = new java.util.Date();
+       	commandeRepository.updateOneCommande(Integer.valueOf(commande.getEtat().getCode()+1), new Date(utilDate.getTime()),id, commande.getEtat().getCode());
+   	}
 
 
 }
